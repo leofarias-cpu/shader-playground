@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dof5o4jaeea7i"]
+
+[ext_resource type="Shader" uid="uid://1mbr8vc1n2jp" path="res://portal.gdshader" id="1_ef3v5"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_grrij"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lujw2"]
+shader = ExtResource("1_ef3v5")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/radius = 0.0
+shader_parameter/softness = 0.2
+shader_parameter/border_width = 0.2
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ef3v5"]
+shader = ExtResource("1_ef3v5")
+shader_parameter/color = Color(0.31321016, 0.52206707, 1, 1)
+shader_parameter/radius = 0.2390000113525
+shader_parameter/softness = 0.010000000475
+shader_parameter/border_width = 0.038000001805
+shader_parameter/border_color = Color(0, 0.8509804, 0.56078434, 1)
+
+[node name="Node2D" type="Node2D" unique_id=1807326182]
+material = SubResource("ShaderMaterial_lujw2")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=77149818]
+material = SubResource("ShaderMaterial_ef3v5")
+position = Vector2(361, 99)
+texture = ExtResource("2_grrij")
