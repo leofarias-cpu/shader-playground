@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dof5o4jaeea7i"]
 
-[ext_resource type="Shader" uid="uid://1mbr8vc1n2jp" path="res://portal.gdshader" id="1_ef3v5"]
+[ext_resource type="Shader" uid="uid://drlmp6mnq8top" path="res://normal portal.gdshader" id="1_ef3v5"]
+[ext_resource type="Shader" uid="uid://1mbr8vc1n2jp" path="res://weird fucking portal.gdshader" id="2_6r214"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_grrij"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lujw2"]
@@ -10,19 +11,39 @@ shader_parameter/radius = 0.0
 shader_parameter/softness = 0.2
 shader_parameter/border_width = 0.2
 shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/breathing_strenght = 0.1
+shader_parameter/breathing_frequency = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ef3v5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pgh4"]
+shader = ExtResource("2_6r214")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/radius = 0.2
+shader_parameter/softness = 0.01
+shader_parameter/border_width = 0.2
+shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/breathing_strenght = 0.1
+shader_parameter/breathing_frequency = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtc1a"]
 shader = ExtResource("1_ef3v5")
-shader_parameter/color = Color(0.31321016, 0.52206707, 1, 1)
-shader_parameter/radius = 0.2390000113525
-shader_parameter/softness = 0.010000000475
-shader_parameter/border_width = 0.038000001805
-shader_parameter/border_color = Color(0, 0.8509804, 0.56078434, 1)
+shader_parameter/color = Color(0.6235227, 0.4903624, 0.880648, 1)
+shader_parameter/radius = 0.2
+shader_parameter/softness = 0.01
+shader_parameter/border_width = 0.1150000054625
+shader_parameter/border_color = Color(0.35778308, 0.64732796, 0.5052993, 1)
+shader_parameter/breathing_strenght = 0.0810000038475
+shader_parameter/breathing_frequency = 10.0
 
 [node name="Node2D" type="Node2D" unique_id=1807326182]
 material = SubResource("ShaderMaterial_lujw2")
 
+[node name="Icon2" type="Sprite2D" parent="." unique_id=1480975183]
+visible = false
+material = SubResource("ShaderMaterial_2pgh4")
+position = Vector2(573, 121)
+texture = ExtResource("2_grrij")
+
 [node name="Icon" type="Sprite2D" parent="." unique_id=77149818]
-material = SubResource("ShaderMaterial_ef3v5")
-position = Vector2(361, 99)
+material = SubResource("ShaderMaterial_wtc1a")
+position = Vector2(303, 110)
 texture = ExtResource("2_grrij")
