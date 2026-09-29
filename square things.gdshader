@@ -3,27 +3,19 @@ shader_type canvas_item;
 uniform vec3 color: source_color;
 uniform float radius: hint_range(0, 0.5) = 0.2;
 uniform float softness: hint_range(0, 0.5) = 0.01;
-
 uniform float border_width: hint_range(0, 0.5) = 0.2;
 uniform vec3 border_color: source_color;
 
 uniform float breathing_strenght: hint_range(0, 0.2) = 0.1;
 uniform float breathing_frequency: hint_range(0, 10, 0.05) = 1.0;
-
-uniform float noise_speed: hint_range(0, 1.0);
-uniform vec2 noise_direction = vec2(1.0, 1.0);
-uniform float displacement_strength: hint_range(0, 0.2, 0.001);
+uniform float waves: hint_range(0, 10, 0.05) = 1.0;
 
 void fragment() {
-	float oscilation = sin(TIME * breathing_frequency);
-		
-	vec2 noise_uv = UV + TIME * noise_direction * noise_speed;
-  	float noise_displacement = texture(TEXTURE, noise_uv).r;
+	float oscilation = 
+		sin((TIME * breathing_frequency) + UV.x * waves)  *
+		sin((TIME * breathing_frequency) + UV.y * waves + 3.0) ;
 
-	float distancia = distance(UV, vec2(0.5, 0.5)) + 
-	   oscilation * breathing_strenght +
-	   noise_displacement * displacement_strength;
-	
+	float distancia = distance(vec2(0.5, 0.5), UV) + oscilation;
 	float outside_radius = radius + border_width;
 	
 	float inner_mask = smoothstep(radius, radius - softness, distancia);
