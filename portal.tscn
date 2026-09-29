@@ -28,15 +28,15 @@ shader_parameter/breathing_frequency = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wtc1a"]
 shader = ExtResource("1_ef3v5")
-shader_parameter/color = Color(0.6235227, 0.4903624, 0.880648, 1)
+shader_parameter/color = Color(0.078, 0.11279998, 0.6, 1)
 shader_parameter/radius = 0.3050000144875
 shader_parameter/softness = 0.02400000114
-shader_parameter/border_width = 0.0710000033725
-shader_parameter/border_color = Color(0.35778308, 0.64732796, 0.5052993, 1)
-shader_parameter/breathing_strenght = 0.11600000551
-shader_parameter/breathing_frequency = 1.90000002831228
+shader_parameter/border_width = 0.054000002564999997
+shader_parameter/border_color = Color(0.25, 0.38749987, 1, 1)
+shader_parameter/breathing_strenght = 0.0830000039425
+shader_parameter/breathing_frequency = 1.65000002458698
 shader_parameter/noise_speed = 0.4050000192375
-shader_parameter/noise_direction = Vector2(1, -1)
+shader_parameter/noise_direction = Vector2(0, 1)
 shader_parameter/displacement_strength = 0.0810000038475
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wtc1a"]
@@ -46,6 +46,17 @@ frequency = 0.005
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2pgh4"]
 noise = SubResource("FastNoiseLite_wtc1a")
 seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r214"]
+shader = ExtResource("1_6r214")
+shader_parameter/color = Color(0.7708145, 0.34603667, 0.56714237, 1)
+shader_parameter/radius = 0.2
+shader_parameter/softness = 0.01
+shader_parameter/border_width = 0.2
+shader_parameter/border_color = Color(1, 0.28406066, 0.61748517, 1)
+shader_parameter/breathing_strenght = 0.1
+shader_parameter/breathing_frequency = 2.9000000432134803
+shader_parameter/waves = 10.0
 
 [node name="Node2D" type="Node2D" unique_id=1807326182]
 material = SubResource("ShaderMaterial_lujw2")
@@ -60,4 +71,11 @@ texture_repeat = 2
 material = SubResource("ShaderMaterial_wtc1a")
 position = Vector2(336, 108)
 scale = Vector2(0.41992188, 0.41992188)
+texture = SubResource("NoiseTexture2D_2pgh4")
+
+[node name="Regular portal2" type="Sprite2D" parent="." unique_id=1073415958]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6r214")
+position = Vector2(472.00003, 205)
+scale = Vector2(0.17633438, 0.17633438)
 texture = SubResource("NoiseTexture2D_2pgh4")
